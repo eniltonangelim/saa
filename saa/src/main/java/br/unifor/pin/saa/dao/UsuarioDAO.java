@@ -47,6 +47,18 @@ public class UsuarioDAO {
 		return query.getResultList();
 	}
 	
+	public Usuarios buscaLogin(String nome){
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Usuarios> criteriaQuery = criteriaBuilder.createQuery(Usuarios.class);
+		Root<Usuarios> usuarios = criteriaQuery.from(Usuarios.class);
+		criteriaQuery.where(criteriaBuilder.like(usuarios.<String>get("nome"), "%"+nome+"%"));
+		
+		Query query = entityManager.createQuery(criteriaQuery);
+		
+		return (Usuarios) query.getSingleResult();
+	}
+
+	
 	public Usuarios buscaPorId(Integer id) throws DAOException {
 		String jpql = "select u from Usuarios u where u.id = :id";
 		Query query = entityManager.createQuery(jpql);

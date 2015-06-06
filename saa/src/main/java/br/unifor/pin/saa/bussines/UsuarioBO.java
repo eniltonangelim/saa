@@ -58,4 +58,8 @@ public class UsuarioBO {
 		usuarioDAO.excluir(usuario);
 	}
 
+	public Usuarios buscaLogin(String nome){
+		return usuarioDAO.buscaLogin(nome);
+	}
+
 }
