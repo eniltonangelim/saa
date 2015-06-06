@@ -49,12 +49,12 @@ public class CadTurmaManager {
 	
 	public String salvar() throws Exception{
 		
-		System.out.println(this.turma);
+		/*System.out.println(this.turma);
 		if(this.turma.getInstituicao() == null){
 			throw new Exception("Não inseriu");
-		}
-//		turmasBO.salvar(this.turma);
-		MessagesUtils.info("Turma salva com sucesso!");
+		}*/
+		turmasBO.salvar(this.turma);
+		//MessagesUtils.info("Turma salva com sucesso!");
 		return Navigation.SUCESSO;
 	}
 	

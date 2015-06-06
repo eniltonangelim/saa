@@ -31,6 +31,36 @@
 							itemLabel="#{i.nome}" itemValue="#{i}" />
 					</p:selectOneMenu>
 					<p:message for="instituicao" />
+				
+					<p:outputLabel value="Professor: " />
+					<font color="red">*</font>
+					<p:selectOneMenu id="professor"
+						value="#{cadTurma.turma.professor}"
+						converter="professorConverter">
+						<f:selectItems value="#{cadTurma.professores}" var="d"
+							itemLabel="#{d.nome}" itemValue="#{d}" />
+					</p:selectOneMenu>
+					<p:message for="professor" />
+
+					<p:outputLabel value="Alunos: " />
+					<font color="red">*</font>
+					<p:selectOneMenu id="aluno"
+						value="#{cadTurma.turma.aluno}"
+						converter="disciplinaConverter">
+						<f:selectItems value="#{cadTurma.alunos}" var="d"
+							itemLabel="#{d.nome}" itemValue="#{d}" />
+					</p:selectOneMenu>
+					<p:message for="aluno" />
+
+					<p:outputLabel value="Disciplinas: " />
+					<font color="red">*</font>
+					<p:selectOneMenu id="disciplina"
+						value="#{cadTurma.turma.disciplina}"
+						converter="disciplinaConverter">
+						<f:selectItems value="#{cadTurma.disciplinas}" var="d"
+							itemLabel="#{d.nome}" itemValue="#{d}" />
+					</p:selectOneMenu>
+					<p:message for="disciplina" />
 
 					<h:panelGrid columns="1">
 						<p:commandButton value="Salvar" action="#{cadTurma.salvar}"
