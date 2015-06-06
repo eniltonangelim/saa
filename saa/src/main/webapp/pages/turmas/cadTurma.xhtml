@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/template.xhtml">
+	<ui:define name="content">
+
+		<h:form id="formCadTurma">
+			<f:validateBean>
+
+				<h:panelGrid>
+					<p:messages id="messages" showDetail="true" autoUpdate="true"
+						closable="true" />
+				</h:panelGrid>
+				<h:panelGrid id="gridTurma" columns="4" styleClass="content">
+
+					<p:outputLabel value="Nome" />
+					<font color="red">*</font>
+					<p:inputText id="turma" value="#{cadTurma.turma.turma}"
+						required="true" requiredMessage="Campo Obrigatório" />
+					<p:message for="turma" />
+
+					<p:outputLabel value="Instituição: " />
+					<font color="red">*</font>
+					<p:selectOneMenu id="instituicao"
+						value="#{cadTurma.turma.instituicao}"
+						converter="instituicaoConverter">
+						<f:selectItems value="#{cadTurma.instituicoes}" var="i"
+							itemLabel="#{i.nome}" itemValue="#{i}" />
+					</p:selectOneMenu>
+					<p:message for="instituicao" />
+
+					<h:panelGrid columns="1">
+						<p:commandButton value="Salvar" action="#{cadTurma.salvar}"
+							ajax="false" />
+					</h:panelGrid>
+				</h:panelGrid>
+			</f:validateBean>
+		</h:form>
+	</ui:define>
+</ui:composition>
