@@ -50,4 +50,20 @@
 		<param-value>bootstrap</param-value>
 	</context-param>
 
+	
+	<filter>
+		<filter-name>OpenEntityManagerInViewFilter</filter-name>
+		<filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>OpenEntityManagerInViewFilter</filter-name>
+	<!--  <url-pattern>/pages/turma/*</url-pattern> -->
+		<url-pattern>/pages/turma/listTurma.xml</url-pattern>
+	</filter-mapping>
+		<filter-mapping>
+		<filter-name>OpenEntityManagerInViewFilter</filter-name>
+	<!--  <url-pattern>/pages/turma/*</url-pattern> -->
+		<url-pattern>/pages/turma/atualizaTurma.xml</url-pattern>
+	</filter-mapping>
+	
 </web-app>

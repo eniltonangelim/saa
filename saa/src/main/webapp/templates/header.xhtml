@@ -3,13 +3,61 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"  
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
 <f:view>
-	<h:form>
-		<h:panelGroup id="header" layout="block">
-			<h1><a href="home.jsf">SAA - Sistema de Avaliação de Aulas</a></h1>
+		<h:panelGroup styleclass="header" id="header" layout="block">
+		    	<ul>
+					<ui:fragment rendered="true">
+					 <li>
+				       <h:outputText value="LOGO" />  
+					 </li>
+					</ui:fragment>
+					<ui:fragment rendered="true">
+					 <li>
+						<div id="dropdown" class="dropdown">
+							<button id="profile" style="btn btn-default dropdown-toggle" class="perfilButton" 
+								type="button" value="" data-toggle='dropdown' /> 
+					    
+					    	<ul class="dropdown-menu" role="menu" aria-labelledby="profile">
+						
+							<ui:fragment rendered="true">
+							<li role="presentation">
+								<a href="">Minhas turmas</a>
+							</li>
+							<li role="presentation">
+								<a role="menuitem" tabindex="-1" href="">Nova turma</a>  
+							</li>
+							</ui:fragment>		
+						    </ul>
+						    
+						</div>
+					 </li>
+					 </ui:fragment>
+						<ui:fragment rendered="true">
+						 <li>
+						 <h:form>
+						  <h:commandLink  ajax="false"  immediate="true" >
+					       <h:outputText value="Atividades" />
+					      </h:commandLink>
+					     </h:form>  
+						 </li>
+						</ui:fragment>	
+						<ui:fragment rendered="true">
+						<li>
+						<h:panelGroup id="containerSearch" layout="block">	
+							<p:inputText maxlength="25" />
+						</h:panelGroup>
+						</li>
+						<li>
+						<h:panelGroup id="containerLogOut" layout="block">	
+							<h:commandButton style="btn btn-default" type="button" value="" />
+						</h:panelGroup>
+						</li>
+						</ui:fragment>
+				</ul>
 		</h:panelGroup>
-	</h:form>
+
 </f:view>
 </html>

@@ -8,6 +8,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
@@ -15,6 +17,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.unifor.pin.saa.entity.Alunos;
+import br.unifor.pin.saa.entity.Turmas;
 
 
 @Repository
@@ -51,6 +54,17 @@ public class AlunosDAO {
 		return query.getResultList();
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Alunos> buscarPorTurma(Long turmaId){
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Alunos> criteriaQuery = criteriaBuilder.createQuery(Alunos.class);
+		Root<Alunos> alunos = criteriaQuery.from(Alunos.class);
+		Join<Turmas,Alunos> turmaAluno = alunos.join("turma", JoinType.INNER);
+		criteriaQuery.where(criteriaBuilder.and(criteriaBuilder.equal(turmaAluno.get("id"), turmaId)));
+		
+		Query query = entityManager.createQuery(criteriaQuery);
+		return query.getResultList();
+	}
 
 	@SuppressWarnings("unchecked")
 	public List<Alunos> buscarTodos(){

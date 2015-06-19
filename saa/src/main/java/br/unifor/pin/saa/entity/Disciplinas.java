@@ -2,16 +2,11 @@ package br.unifor.pin.saa.entity;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Collection;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -47,35 +42,6 @@ public class Disciplinas implements Serializable{
 		this.registro = registro;
 	}
 
-	@ManyToMany(mappedBy="disciplina")
-	private Collection<Turmas> turma;
-	
-	@ManyToMany
-	@JoinTable(name = "disciplina_has_perguntas")
-	private Collection<Perguntas> pergunta;
-	
-	public Disciplinas(){
-		turma = new ArrayList<Turmas>();
-		pergunta = new ArrayList<Perguntas>();
-	}
-
-	public Collection<Perguntas> getPergunta() {
-		return pergunta;
-	}
-
-	public void setPergunta(Collection<Perguntas> pergunta) {
-		this.pergunta = pergunta;
-	}
-
-
-	public Collection<Turmas> getTurma() {
-		return turma;
-	}
-
-	public void setTurma(Collection<Turmas> turma) {
-		this.turma = turma;
-	}
-
 	public Long getId() {
 		return id;
 	}
@@ -91,15 +57,15 @@ public class Disciplinas implements Serializable{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+		
 	@Override
 	public int hashCode() {
-		final int prime = 31;	
+		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -116,7 +82,7 @@ public class Disciplinas implements Serializable{
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	 public String toString() {
 	     return String.format("%s[id=%d]", getClass().getSimpleName(), getId());

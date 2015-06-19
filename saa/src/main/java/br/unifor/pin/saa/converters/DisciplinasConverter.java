@@ -23,8 +23,13 @@ public class DisciplinasConverter implements Converter {
 	@Override
 	public String getAsString(FacesContext ctx, UIComponent component, Object value) {
 		// TODO Auto-generated method stub
-	    Long id = (value instanceof Disciplinas) ? ((Disciplinas) value).getId() : null;
-	    return (id != null) ? String.valueOf(id) : null;
+		if (value instanceof Disciplinas){
+			this.addAttribute(component, ((Disciplinas) value));
+			Long id = ((Disciplinas) value).getId();
+			return String.valueOf(id);
+		}
+		
+	    return (String) null;
 	}
 	
 	

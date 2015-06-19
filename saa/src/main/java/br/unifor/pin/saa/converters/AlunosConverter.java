@@ -1,6 +1,5 @@
 package br.unifor.pin.saa.converters;
 
-import java.io.Serializable;
 import java.util.Map;
 
 import javax.faces.component.UIComponent;
@@ -12,17 +11,13 @@ import br.unifor.pin.saa.entity.Alunos;
 
 
 @FacesConverter(value = "alunoConverter")
-public class AlunosConverter implements Converter, Serializable {
+public class AlunosConverter implements Converter {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 235457803076473148L;
 
 	@Override
 	public Object getAsObject(FacesContext ctx, UIComponent component, String value) {
 		if (value != null && !value.isEmpty()) {	
-			return this.getAttributesFrom(component);
+			return this.getAttributesFrom(component).get(value);
 		}
 		return null;
 	}
@@ -30,8 +25,13 @@ public class AlunosConverter implements Converter, Serializable {
 	@Override
 	public String getAsString(FacesContext ctx, UIComponent component, Object value) {
 		// TODO Auto-generated method stub
-	    Long id = (value instanceof Alunos) ? ((Alunos) value).getId() : null;
-	    return (id != null) ? String.valueOf(id) : null;
+		if (value instanceof Alunos){
+			this.addAttribute(component, ((Alunos) value));
+			Long id = ((Alunos) value).getId();
+			return String.valueOf(id);
+		}
+		
+	    return (String) null;
 	}
 	
 	

@@ -3,7 +3,7 @@ package br.unifor.pin.saa.entity;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,31 +39,36 @@ public class Turmas implements Serializable{
 	private String turma;
 	
 	@ManyToOne
-	@JoinColumn(name = "professor_id")
+	@JoinColumn(name = "professor_id", nullable = false)
 	private Professores professor;
 	
 	@ManyToOne
-	@JoinColumn(name = "instituicao_id")
+	@JoinColumn(name = "instituicao_id", nullable = false)
 	private Instituicoes instituicao;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "turma_has_aluno")
-	private List<Alunos> aluno;
+	@JoinTable(name = "turma_has_aluno",
+	    joinColumns = { 
+	        @JoinColumn(name = "turma_id", referencedColumnName = "id")
+		}, 
+		inverseJoinColumns = { 
+	        @JoinColumn(name = "aluno_id", referencedColumnName = "id")
+		}
+	)
+	private Collection<Alunos> aluno;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "turma_has_disciplina")
-	private List<Disciplinas> disciplina;
+	@ManyToOne
+	@JoinColumn(name = "disciplina_id", nullable = false)
+	private Disciplinas disciplina;
 
 	@Column(nullable=false, columnDefinition="TIMESTAMP DEFAULT CURRENT_DATE")
 	@Type(type="timestamp")
 	private Timestamp registro;
 	
-
-	public Turmas(){
-		disciplina = new ArrayList<Disciplinas>();
+	public Turmas() {
 		aluno = new ArrayList<Alunos>();
 	}
-	
+
 	public Timestamp getRegistro() {
 		return registro;
 	}
@@ -105,30 +110,34 @@ public class Turmas implements Serializable{
 		this.instituicao = instituicao;
 	}
 
-	public List<Alunos> getAluno() {
+
+	public Collection<Alunos> getAluno() {
 		return aluno;
 	}
 
-	public void setAluno(List<Alunos> aluno) {
+	public void setAluno(Collection<Alunos> aluno) {
 		this.aluno = aluno;
 	}
 
-	public List<Disciplinas> getDisciplina() {
+	public Disciplinas getDisciplina() {
 		return disciplina;
 	}
 
-	public void setDisciplina(List<Disciplinas> disciplina) {
+	public void setDisciplina(Disciplinas disciplina) {
 		this.disciplina = disciplina;
 	}
+	
+	
+
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;	
+		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -145,7 +154,7 @@ public class Turmas implements Serializable{
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	 public String toString() {
 	     return String.format("%s[id=%d]", getClass().getSimpleName(), getId());

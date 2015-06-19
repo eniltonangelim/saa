@@ -23,8 +23,13 @@ public class PerguntasConverter implements Converter {
 	@Override
 	public String getAsString(FacesContext ctx, UIComponent component, Object value) {
 		// TODO Auto-generated method stub
-	    Long id = (value instanceof Perguntas) ? ((Perguntas) value).getId() : null;
-	    return (id != null) ? String.valueOf(id) : null; 
+		if (value instanceof Perguntas){
+			this.addAttribute(component, ((Perguntas) value));
+			Long id = ((Perguntas) value).getId();
+			return String.valueOf(id);
+		}
+		
+	    return (String) value;
 	}
 	
 	

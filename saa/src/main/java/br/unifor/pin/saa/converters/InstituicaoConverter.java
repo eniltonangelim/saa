@@ -23,8 +23,14 @@ public class InstituicaoConverter implements Converter  {
 	@Override
 	public String getAsString(FacesContext ctx, UIComponent component, Object value) {
 		// TODO Auto-generated method stub
-	    Long id = (value instanceof Instituicoes) ? ((Instituicoes) value).getId() : null;
-	    return (id != null) ? String.valueOf(id) : null;
+	    
+		if (value instanceof Instituicoes){
+			this.addAttribute(component, ((Instituicoes) value));
+			Long id = ((Instituicoes) value).getId();
+			return String.valueOf(id);
+		}
+		
+	    return (String) value;
 	}
 	
 	

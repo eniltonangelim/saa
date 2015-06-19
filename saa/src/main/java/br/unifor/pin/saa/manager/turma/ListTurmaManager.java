@@ -8,7 +8,9 @@ import javax.faces.bean.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import br.unifor.pin.saa.bussines.AlunosBO;
 import br.unifor.pin.saa.bussines.TurmasBO;
+import br.unifor.pin.saa.entity.Alunos;
 import br.unifor.pin.saa.entity.Turmas;
 import br.unifor.pin.saa.utils.Navigation;
 
@@ -20,16 +22,23 @@ public class ListTurmaManager {
 	
 	@Autowired
 	private TurmasBO turmasBO;
+	@Autowired
+	private AlunosBO alunosBO;
 	private String turma;
 	private List<Turmas> turmas;
 	
 	public void lista(){
 		turmas = turmasBO.listarPorNome(turma);
+		
+		for (Turmas t : turmas) {
+			List<Alunos> alunos = alunosBO.buscarPorTurma(t.getId());
+			t.setAluno(alunos);
+		}
 	}
 	
 	public void excluir(Turmas turma2){
 		turmasBO.excluir(turma2);
-		turmas = turmasBO.listarPorNome(turma);
+		this.lista();
 	}
 	
 	public String preparaAtualizar(Turmas turma2){
@@ -60,5 +69,6 @@ public class ListTurmaManager {
 	public void setTurmas(List<Turmas> turmas) {
 		this.turmas = turmas;
 	}
-		
+	
+	
 }

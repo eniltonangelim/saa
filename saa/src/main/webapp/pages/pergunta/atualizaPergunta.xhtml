@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	<ui:define name="content">
+
+		<h:form id="formAtualizaPergunta">
+			<h2>Atualiza Dados Perguntas</h2>
+			<p:separator />
+			<br />
+			<h:panelGrid id="gridInst" columns="2" styleClass="panelgrid">
+				
+				<p:outputLabel value="Pergunta: " />
+				<font color="red">*</font>
+				<p:inputText id="nome" value="#{atualizaPergunta.perguntaSelecionado.pergunta}" required="true"
+					requiredMessage="Campo Obrigatório" />
+				<p:message for="nome" />
+								
+			</h:panelGrid>
+			<br />
+			
+			<h:panelGrid columns="3" styleClass="panelgrid">
+				<p:commandButton value="Atualizar" action="#{atualizaPergunta.atualizar()}"
+					ajax="false" />
+			<!-- Limpar Dados -->
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

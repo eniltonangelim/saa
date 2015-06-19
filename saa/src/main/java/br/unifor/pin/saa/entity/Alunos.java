@@ -51,21 +51,19 @@ public class Alunos implements Serializable {
 	private Timestamp alterado;
 	
 	@ManyToMany(mappedBy="aluno")
-	private Collection<Turmas> turma;
+	private Collection<Turmas> turma; 
 	
-	public Long getId() {
-		return this.id;
-	}
-
 	public Collection<Turmas> getTurma() {
 		return turma;
 	}
-
 
 	public void setTurma(Collection<Turmas> turma) {
 		this.turma = turma;
 	}
 
+	public Long getId() {
+		return this.id;
+	}
 
 	public Boolean getConfirmado() {
 		return confirmado;
@@ -127,14 +125,15 @@ public class Alunos implements Serializable {
 		this.alterado = alterado;
 	}
 	
+	
 	@Override
 	public int hashCode() {
-		final int prime = 31;	
+		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -151,10 +150,11 @@ public class Alunos implements Serializable {
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	 public String toString() {
 	     return String.format("%s[id=%d]", getClass().getSimpleName(), getId());
 	 }
-		
+	
+
 }

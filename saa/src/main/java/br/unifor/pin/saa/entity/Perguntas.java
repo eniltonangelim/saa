@@ -2,15 +2,13 @@ package br.unifor.pin.saa.entity;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -40,13 +38,10 @@ public class Perguntas implements Serializable {
 	@Column 
 	private Boolean ativo;
 	
-	@ManyToMany(mappedBy="pergunta")
-	private List<Disciplinas> disciplina;
+	@ManyToOne
+	@JoinColumn(name = "turma_id", nullable = false)
+	private Turmas turma;
 
-	public Perguntas(){
-		disciplina = new ArrayList<Disciplinas>();
-	}
-	
 	public Long getId() {
 		return id;
 	}
@@ -75,14 +70,14 @@ public class Perguntas implements Serializable {
 		this.ativo = ativo;
 	}
 
-	public List<Disciplinas> getDisciplina() {
-		return disciplina;
+	public Turmas getTurma() {
+		return turma;
 	}
-
-	public void setDisciplina(List<Disciplinas> disciplina) {
-		this.disciplina = disciplina;
+	
+	public void setTurma(Turmas turma) {
+		this.turma = turma;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;	
@@ -90,6 +85,7 @@ public class Perguntas implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

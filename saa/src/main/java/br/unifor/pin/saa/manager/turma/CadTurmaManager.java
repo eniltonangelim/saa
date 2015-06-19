@@ -1,5 +1,6 @@
 package br.unifor.pin.saa.manager.turma;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -49,12 +50,9 @@ public class CadTurmaManager {
 	
 	public String salvar() throws Exception{
 		
-		/*System.out.println(this.turma);
-		if(this.turma.getInstituicao() == null){
-			throw new Exception("Não inseriu");
-		}*/
+		turma.setRegistro(new Timestamp(System.currentTimeMillis()));
 		turmasBO.salvar(this.turma);
-		//MessagesUtils.info("Turma salva com sucesso!");
+		
 		return Navigation.SUCESSO;
 	}
 	
@@ -78,7 +76,7 @@ public class CadTurmaManager {
 
 	public Collection<SelectItem> getProfessores() {
 		Collection<SelectItem> items = new ArrayList<SelectItem>();
-		items.add(new SelectItem(null, "---Selecione---"));
+		items.add(new SelectItem(null, "Selecione"));
 		List<Professores> professores = professoresBO.buscarTodos();
 		for (Professores professor : professores) {
 			MessagesUtils.info("Turma as Professor: " + professor.getNome());
@@ -99,7 +97,6 @@ public class CadTurmaManager {
 	
 	public Collection<SelectItem> getAlunos() {
 		Collection<SelectItem> items = new ArrayList<SelectItem>();
-		items.add(new SelectItem(null, "---Selecione---"));
 		List<Alunos> alunos = alunosBO.buscarTodos();
 		for (Alunos aluno : alunos) {
 			items.add(new SelectItem(aluno, aluno.getNome()));
@@ -109,7 +106,7 @@ public class CadTurmaManager {
 
 	public Collection<SelectItem> getDisciplinas() {
 		Collection<SelectItem> items = new ArrayList<SelectItem>();
-		items.add(new SelectItem(null, "---Selecione---"));
+		items.add(new SelectItem(null, "Selecione"));
 		List<Disciplinas> disciplinas = disciplinasBO.buscarTodos();
 		for (Disciplinas disciplina : disciplinas) {
 			items.add(new SelectItem(disciplina, disciplina.getNome()));

@@ -39,6 +39,10 @@ public class AlunosBO {
 		return alunosDAO.buscarPorId(id);
 	}
 	
+	public List<Alunos> buscarPorTurma(Long id){
+		return alunosDAO.buscarPorTurma(id);
+	}
+	
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public void excluir(Alunos aluno) {
 

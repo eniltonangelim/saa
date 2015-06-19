@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/templates/login/template.xhtml">
+	<ui:define name="content">
+
+	<h:form id="formLogin">
+	<f:validateBean>
+
+		<h:panelGrid>
+			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+		</h:panelGrid>
+
+		 	
+		<h:panelGrid id="gridLogin" columns="1" class="login-content">
+			<div class="login-logo">SAA - Sistema de Avaliação de Aulas</div>
+		<!-- Nome Usuario -->
+			<p:inputText placeholder="Usuário" class="login-input" id="nome" value="#{loginUsuario.nome}" required="true"
+				requiredMessage="Campo Obrigatório" />
+			<p:message for="nome" closable="true" />
+		<!-- Senha Usuario -->
+			<p:password placeholder="Senha" class="login-input" 
+				id="senha" value="#{loginUsuario.senha}" 
+				required="true"	requiredMessage="Campo obrigatório"/>
+			<p:message for="senha" cloasable="true" />
+		<!-- Button Login -->
+		
+			<p:commandButton class="login-button" action="#{loginUsuario.login()}" value="Login" ajax="false" /> 
+		</h:panelGrid>
+	</f:validateBean>
+		<h:panelGrid id="gridLoginLink" columns="2" styleClass="outputLink">
+			<h:outputLink value="#"> 
+				<h:outputText value="Esqueceu sua senha?" />
+			</h:outputLink>
+
+			<h:commandLink ajax="false" action="#{loginUsuario.loginNewLogin()}" immediate="true" >
+				<h:outputText value="Não possui uma conta?" />
+			</h:commandLink>
+			
+		</h:panelGrid>
+	</h:form>
+	</ui:define>
+</ui:composition>

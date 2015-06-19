@@ -24,12 +24,12 @@
 
 					<p:outputLabel value="Instituição: " />
 					<font color="red">*</font>
-					<p:selectOneMenu id="instituicao"
+					<h:selectOneMenu id="instituicao"
 						value="#{cadTurma.turma.instituicao}"
 						converter="instituicaoConverter">
 						<f:selectItems value="#{cadTurma.instituicoes}" var="i"
 							itemLabel="#{i.nome}" itemValue="#{i}" />
-					</p:selectOneMenu>
+					</h:selectOneMenu>
 					<p:message for="instituicao" />
 				
 					<p:outputLabel value="Professor: " />
@@ -37,29 +37,29 @@
 					<p:selectOneMenu id="professor"
 						value="#{cadTurma.turma.professor}"
 						converter="professorConverter">
-						<f:selectItems value="#{cadTurma.professores}" var="d"
-							itemLabel="#{d.nome}" itemValue="#{d}" />
+						<f:selectItems value="#{cadTurma.professores}" var="p"
+							itemLabel="#{p.nome}" itemValue="#{p}" />
 					</p:selectOneMenu>
 					<p:message for="professor" />
-
-					<p:outputLabel value="Alunos: " />
+ 
+					<p:outputLabel value="Alunos " />
 					<font color="red">*</font>
-					<p:selectOneMenu id="aluno"
+					<h:selectManyMenu id="alunos"
 						value="#{cadTurma.turma.aluno}"
-						converter="disciplinaConverter">
-						<f:selectItems value="#{cadTurma.alunos}" var="d"
-							itemLabel="#{d.nome}" itemValue="#{d}" />
-					</p:selectOneMenu>
-					<p:message for="aluno" />
+						converter="alunoConverter" required="true">
+						<f:selectItems value="#{cadTurma.alunos}" var="a"
+							itemLabel="#{a.nome}" itemValue="#{a}" />
+					</h:selectManyMenu>
+					<p:message for="alunos" />
 
 					<p:outputLabel value="Disciplinas: " />
 					<font color="red">*</font>
-					<p:selectOneMenu id="disciplina"
+					<h:selectOneMenu id="disciplina"
 						value="#{cadTurma.turma.disciplina}"
 						converter="disciplinaConverter">
 						<f:selectItems value="#{cadTurma.disciplinas}" var="d"
 							itemLabel="#{d.nome}" itemValue="#{d}" />
-					</p:selectOneMenu>
+					</h:selectOneMenu>
 					<p:message for="disciplina" />
 
 					<h:panelGrid columns="1">

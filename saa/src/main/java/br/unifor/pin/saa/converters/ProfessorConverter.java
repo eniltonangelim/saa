@@ -22,8 +22,13 @@ public class ProfessorConverter implements Converter {
 
 	@Override
 	public String getAsString(FacesContext ctx, UIComponent component, Object value) {
-	    Long id = (value instanceof Professores) ? ((Professores) value).getId() : null;
-	    return (id != null) ? String.valueOf(id) : null;
+		if (value instanceof Professores){
+			this.addAttribute(component, ((Professores) value));
+			Long id = ((Professores) value).getId();
+			return String.valueOf(id);
+		}
+		
+	    return (String) value;
 	}
 	
 	protected void addAttribute(UIComponent component, Professores o) {

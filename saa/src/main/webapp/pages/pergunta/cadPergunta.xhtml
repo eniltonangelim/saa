@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	<ui:define name="content">
+
+		<h:form id="formCadPergunta">
+		<f:validateBean >
+			<h2>Cadastro de Pergunta</h2>
+			<p:separator />
+			<br />
+			<h:panelGrid>
+				<p:messages id="messages" showDetail="true" autoUpdate="true"
+					closable="true" />
+			</h:panelGrid>
+			
+			<!-- Nome Pergunta -->
+			<h:panelGrid id="gridPergunta" columns="2" styleClass="panelgrid">
+				<p:outputLabel value="Pergunta" />
+				<font color="red">*</font>
+				<p:inputText id="pergunta" value="#{cadPergunta.pergunta}" required="true"
+					requiredMessage="Campo Obrigatório" />	
+			</h:panelGrid>	
+			<br />
+
+			<h:panelGrid columns="1" styleClass="panelgrid">
+				<p:commandButton value="Salvar" action="#{cadPergunta.salvar()}" ajax="false" />
+			</h:panelGrid>
+			
+		</f:validateBean>
+		</h:form>
+	</ui:define>
+</ui:composition>

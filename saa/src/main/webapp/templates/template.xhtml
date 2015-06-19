@@ -5,23 +5,27 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<title>SAA Application</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"></link>
 	<h:outputStylesheet name="css/screen.css" />
 </h:head>
 <h:body>
 	<h:panelGroup id="page" layout="block">
-		<div id="header">
 			<ui:insert name="header">
 				<ui:include src="/templates/header.xhtml" />
 			</ui:insert>
-		</div>
-		<h:panelGroup id="container" layout="block">
-			<div id="sidebar">
+		<h:panelGroup id="container" styleclass="" layout="block">
+			<div class="menuHorizontal">
 				<ui:insert name="sidebar">
 					<ui:include src="/templates/menu.xhtml" />
 				</ui:insert>
 			</div>
-			<h:panelGroup id="content" layout="block">
+			<h:panelGroup id="content" styleclass="conteudo" layout="block">
 				<ui:insert name="content" />
 			</h:panelGroup>
 		</h:panelGroup>
@@ -31,6 +35,7 @@
 			</ui:insert>
 		</div>
 	</h:panelGroup>
+
 
 </h:body>
 </html>

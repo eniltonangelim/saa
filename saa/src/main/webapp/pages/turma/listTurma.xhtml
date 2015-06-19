@@ -35,17 +35,16 @@
 				<h:outputText value="#{turmas.turma}" />
 			</p:column>
 
-
 			<p:column headerText="Disciplina">
-				<h:outputText value="#{turmas.disciplina}" converter="disciplinaConverter" var="d"
-							itemLabel="#{d.nome}" itemValue="#{d}" />
+				<h:outputText value="#{turmas.disciplina.nome}"  />
 			</p:column>
 			
-			<p:column headerText="Aluno">
-				<h:outputText value="#{turmas.aluno}" converter="disciplinaConverter" var="a"
-							itemLabel="#{a.nome}" itemValue="#{a}" />
+			<p:column headerText="Aluno(s)">
+				<ui:repeat var="aluno" value="#{turmas.aluno}">
+					<h:outputText value="#{aluno.nome}" /><br/>
+				</ui:repeat>
 			</p:column>
-
+			
 			<p:column headerText="Professor">
 				<h:outputText value="#{turmas.professor.nome}" />
 			</p:column>

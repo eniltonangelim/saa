@@ -8,7 +8,32 @@
 <f:view>
 	<h:form>
 		<h:panelGroup id="sidebar" layout="block">
-			<h1>Menu</h1> Content for the sidebar goes here
+			<p class="menuHorizontalp">
+				Menu
+				<ul>
+					<ui:fragment rendered="true">
+					 <li>
+					  <h:commandLink  ajax="false"  immediate="true" >
+				       <h:outputText styleclass="menuHorizontalLink" value="Turma" />
+				      </h:commandLink>  
+					 </li>
+					</ui:fragment>
+					<ui:fragment rendered="true">
+					 <li>
+					  <h:commandLink  ajax="false"  immediate="true" >
+				       <h:outputText styleclass="menuHorizontalLink" value="Aluno" />
+				      </h:commandLink>  
+					 </li>
+					</ui:fragment>
+					<ui:fragment rendered="true">
+					 <li>
+					  <h:commandLink ajax="false"  immediate="true" >
+				       <h:outputText styleclass="menuHorizontalLink" value="Forum" />
+				      </h:commandLink>  
+					 </li>
+					</ui:fragment>
+				</ul>
+			</p>
 		</h:panelGroup>
 	</h:form>
 </f:view>

@@ -5,15 +5,9 @@
       http://java.sun.com/xml/ns/javaee
       http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 
+
 	<!-- Usuarios Inicio -->
-	<navigation-rule>
-		<from-view-id>*</from-view-id>
-		<navigation-case>
-			<from-outcome>sucesso</from-outcome>
-			<to-view-id>/pages/usuario/cadUsuario.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	
+
 	<navigation-rule>
 		<from-view-id>/pages/usuario/listUsuario.xhtml</from-view-id>
 		<navigation-case>
@@ -21,7 +15,7 @@
 			<to-view-id>/pages/usuario/cadUsuario.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
 	<navigation-rule>
 		<from-view-id>/pages/usuario/listUsuario.xhtml</from-view-id>
 		<navigation-case>
@@ -29,15 +23,7 @@
 			<to-view-id>/pages/usuario/atualizaUsuario.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
-	<navigation-rule>
-		<from-view-id>/pages/usuario/cadUsuario.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>sucesso</from-outcome>
-			<to-view-id>/pages/usuario/listUsuario.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	
+
 	<navigation-rule>
 		<from-view-id>/pages/usuario/atualizaUsuario.xhtml</from-view-id>
 		<navigation-case>
@@ -47,11 +33,117 @@
 	</navigation-rule>
 	<!-- Usuarios Fim -->
 
+	<!-- Instituicao Inicio -->
 	<navigation-rule>
-		<from-view-id>/pages/turma/cadTurma.xhtml</from-view-id>
+		<from-view-id>/pages/instituicao/cadInstituicao.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>sucesso</from-outcome>
-			<to-view-id>/pages/usuario/listUsuario.xhtml</to-view-id>
+			<to-view-id>/pages/instituicao/cadInstituicao.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/pages/instituicao/cadInstituicao.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>proxima</from-outcome>
+			<to-view-id>/pages/disciplina/cadDisciplina.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<!-- Insituicao FIm -->
+	
+	<!-- Disciplina Inicio -->
+	<navigation-rule>
+		<from-view-id>/pages/disciplina/cadDisciplina.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/pages/disciplina/cadDisciplina.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/pages/disciplina/cadDisciplina.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>anterior</from-outcome>
+			<to-view-id>/pages/instituicao/cadInstituicao.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/pages/disciplina/cadDisciplina.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>proxima</from-outcome>
+			<to-view-id>/pages/aluno/cadAluno.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<!-- Disciplina FIm  -->
+	
+	<!-- Aluno Inicio -->
+		
+	<navigation-rule>
+		<from-view-id>/pages/aluno/cadAluno.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/pages/aluno/cadAluno.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>anterior</from-outcome>
+			<to-view-id>/pages/aluno/cadDisciplina.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>proxima</from-outcome>
+			<to-view-id>/pages/turma/cadTurma.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+		
+	<!-- Professor Inicio -->
+
+	<navigation-rule>
+		<from-view-id>/pages/professor/listProfessor.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>atualiza</from-outcome>
+			<to-view-id>/pages/professor/atualizaProfessor.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/pages/professor/listProfessor.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/pages/professor/cadProfessor.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<!-- Professor FIm -->
+
+	<navigation-rule>
+		<from-view-id>/pages/login/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/pages/instituicao/cadInstituicao.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/pages/login/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>novologin</from-outcome>
+			<to-view-id>/pages/usuario/cadUsuario.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/pages/usuario/cadUsuario.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/pages/login/login.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 

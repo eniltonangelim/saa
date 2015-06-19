@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	<ui:define name="content">
+
+		<h:form id="formCadDisciplina">
+		<f:validateBean >
+			<h2>Cadastro de Disciplinas</h2>
+			<p:separator />
+			<br />
+			<h:panelGrid>
+				<p:messages id="messages" showDetail="true" autoUpdate="true"
+					closable="true" />
+			</h:panelGrid>
+			
+			<!-- Nome Disciplina -->
+			<h:panelGrid id="gridInst" columns="5" styleClass="panelgrid">
+				<p:outputLabel value="Nome" />
+				<font color="red">*</font>
+				<p:inputText id="nome" value="#{cadDisciplina.nome}" required="true"
+					requiredMessage="Campo Obrigatório" />		
+				<br />
+			</h:panelGrid>
+			'			
+			<h:panelGrid columns="3" styleClass="panelgrid">
+				<h:commandLink ajax="false" action="#{cadDisciplina.anteriorTela}" immediate="true" >
+					<h:outputText value="Voltar" />
+				</h:commandLink>
+				<p:commandButton value="Salvar" action="#{cadDisciplina.salvar()}" ajax="false" />
+				<h:commandLink ajax="false" action="#{cadDisciplina.proximaTela}" immediate="true" >
+					<h:outputText value="Continuar" />
+				</h:commandLink>
+			</h:panelGrid>
+		
+		</f:validateBean>
+		</h:form>
+	</ui:define>
+</ui:composition>
